@@ -15,3 +15,7 @@
 
 (defmacro print-names [& exprs]
   `(prn (name-map ~@exprs)))
+
+(defn posint?
+  [n]
+  (and (integer? n) (pos? n)))
