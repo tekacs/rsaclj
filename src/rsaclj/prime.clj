@@ -34,14 +34,14 @@
   {:pre [(posint? n)]
    :post [(= n (apply * %))]}
   (let [[root _] (nt/exact-integer-sqrt n)]
-   (let [fact (->>
-               all-primes
-               (take-while #(<= % root))
-               (filter #(zero? (mod n %)))
-               (first))]
-     (if (nil? fact)
-       [1 n]
-       [fact (/ n fact)]))))
+    (let [fact (->>
+                all-primes
+                (take-while #(<= % root))
+                (filter #(zero? (mod n %)))
+                (first))]
+      (if (nil? fact)
+        [1 n]
+        [fact (/ n fact)]))))
 
 ;; HACK: I assume there's a simpler builtin way to do this.
 (defn- decompose [mapper elems]
