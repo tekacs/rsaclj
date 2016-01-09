@@ -1,6 +1,7 @@
 (ns rsaclj.prime
   "Primality testing and succession.
   Passthroughs in Java, which has these methods on BigInteger."
+  (:refer-clojure :exclude [next])
   (:require [clojure.set :as set]
             [clojure.math.numeric-tower :as nt]
             [rsaclj.utils :refer [posint?]])
@@ -36,7 +37,7 @@
    (let [fact (->>
                all-primes
                (take-while #(<= % root))
-               (filter #(= (mod n %) 0))
+               (filter #(zero? (mod n %)))
                (first))]
      (if (nil? fact)
        [1 n]

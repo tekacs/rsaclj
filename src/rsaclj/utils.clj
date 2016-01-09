@@ -1,5 +1,5 @@
 (ns rsaclj.utils
-  (require [clojure.string :refer [join]])
+  (:require [clojure.string :refer [join]])
   (:gen-class))
 
 (defmacro ? [expr]
